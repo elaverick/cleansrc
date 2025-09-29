@@ -1,0 +1,111 @@
+280925
+
+GLQuake:
+
+  step through gl_extensions output delimited by the space character to avoid overflowing the Con_Printf buffer
+
+050506
+
+Both:
+
+  changed cl_maxfps cvar to default to 9999
+  changed MINIMUM_WIN_MEMORY from  8mb to 16mb
+  changed MAXIMUM_WIN_MEMORY from 16mb to 64mb
+  changed SCR_DrawFPS to handle 4 digit fps
+  changed screenshots names to "cleanXX"
+  changed MAX_MODE_LIST from 30 to 128
+  moved around some assembly headers
+  recoded PF_aim to shoot where you aim
+  removed all #ifdef __sun__ code
+  removed all #ifdef BAN_TEST code
+  removed all #ifdef IDGODS code
+  removed all #ifdef NeXT code
+  removed all #ifdef PARANOID code
+  removed in_use button and the -nouse switch
+  removed the command test
+  removed the command test2
+  removed the cvar sv_aim when recoding the PF_aim function
+  removed the cvar vid_wait
+  removed the qboolean privileged from client_t
+
+WinQuake:
+
+  removed all #ifdef PASSAGES code
+
+GLQuake:
+
+  changed gl_filter_min to default to GL_LINEAR_MIPMAP_LINEAR
+  fixed the function GL_LoadTextures to not crash in -dedicated
+  removed all DrawRam code
+  removed the cvar gl_nobind
+  removed the cvar gl_picmip
+  removed the cvar gl_playermip
+  removed the cvar gl_nocolors
+  removed the function VID_ShiftPalette
+  removed the unsigned char array vid_curpal
+  removed the unsigned short array d_8to16table
+  removed the qboolean isPermedia
+
+040725
+
+Both:
+
+  added cl_maxfps cvar
+  added code to Cvar_Set to make sure coop and deathmatch cant both be true at once
+  added in_use button and a -nouse switch
+  added scr_showfps cvar
+  changed fixed16_t to int
+  changed NUM_SAFE_ARGVS from 7 to 4
+  changed td_starttime from float to double
+  changed vec_t to float
+  cleaned up mathlib 
+  cleaned up demo code
+  fixed most warnings
+  fixed & bug in Host_WriteConfiguration that should be &&
+  optimized ent->model->flags handling in CL_RelinkEntities
+  recoded the function CenterWindow to take 3 params instead of 4 and optimized it
+  recoded the function Com_Init to not take a param (it never used it)
+  recoded the function Sbar_IntermissionOverlay to draw the scoreboard centered in the window
+  removed all #if 0 code
+  removed all #if 1 code (just the #if 1 and #endif.. not the code in between)
+  removed all #ifdef FPS_20 code
+  removed all #ifdef GLTEST code
+  removed all #ifdef INCLUDELIBS code
+  removed all #ifdef QUAKE2 code
+  removed all #ifndef QUAKE_GAME code
+  removed all dinput code
+  removed all joystick code
+  removed all null modem and ipx network code
+  removed all vcr code
+  removed the function IN_Commands
+  removed the function SetPal
+  removed the startup dialog window
+  renamed progsdefs.h to progsdefs.q1
+  speed up lightning beam code
+
+WinQuake:
+
+  changed fixed8_t to int
+  recoded the function Draw_ConsoleBackground to not hack in the version number into the background image
+
+GLQuake:
+
+  cleaned up the multitexture init mess
+  made it use glBindTexture properly
+  major cleaning of whole gl_vidnt.c (to much to list)
+  recoded the function Draw_Init to not hack in the version number into the background image
+  recoded the function GL_LoadTexture to take a 7:th param (int byteperpixel)
+  removed 8bit texture path
+  removed cvar gl_affinemodels
+  removed cvar gl_keeptjunctions
+  removed cvar gl_reporttjunctions
+  removed cvar gl_smoothmodels
+  removed cvar r_drawentities
+  removed cvar r_drawworld
+  removed cvar r_lightmap
+  removed cvar r_fullbright
+  removed envmap stuff
+  removed mirrors
+  removed scrap system
+  removed the function Draw_DebugChar
+  removed the making of .ms2

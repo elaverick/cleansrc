@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{c678c7cb-1683-4109-b96f-db87c751dad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Asm">
+      <UniqueIdentifier>{c3cce071-02dc-46a8-8dc5-ef0bb959616a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Client">
+      <UniqueIdentifier>{7725d151-8e00-4488-8748-d7567b15175d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Console">
+      <UniqueIdentifier>{ed9f4927-cd17-421e-9c46-4504dd2d6f18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Host">
+      <UniqueIdentifier>{134a5328-fc32-4149-9732-054d8a64dc51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Misc">
+      <UniqueIdentifier>{b902abfa-ff2b-49a4-86e0-878b499f2c6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Network">
+      <UniqueIdentifier>{da163f07-26f5-4103-a485-03345c3ced0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Progs">
+      <UniqueIdentifier>{decd01c3-de9d-45c3-bde7-9667dd06cf2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Render">
+      <UniqueIdentifier>{6d837a32-09f4-4b2e-8999-62b62db81fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Server">
+      <UniqueIdentifier>{a1764bf3-d14a-4e6c-9fca-6f9260577786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared_Sound">
+      <UniqueIdentifier>{8a68ad86-fc54-4fd0-9da1-a034d589b86c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GL_OpenGL">
+      <UniqueIdentifier>{42278c84-27c9-45c8-ab8f-b4f255e8e845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{16c001a0-a489-478d-be4b-6322b2e7bfcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared">
+      <UniqueIdentifier>{62e2c5c9-e413-4e06-9e83-d99e05a4473a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GL">
+      <UniqueIdentifier>{3f52b5aa-699f-41b9-91de-461923c37c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{74e1717a-4baa-40b3-b776-24a0b635d91d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="shared\Client\cl_demo.c">
+      <Filter>Source Files\Shared_Client</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Client\cl_input.c">
+      <Filter>Source Files\Shared_Client</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Client\cl_main.c">
+      <Filter>Source Files\Shared_Client</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Client\cl_parse.c">
+      <Filter>Source Files\Shared_Client</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Client\cl_tent.c">
+      <Filter>Source Files\Shared_Client</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Console\conproc.c">
+      <Filter>Source Files\Shared_Console</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Console\console.c">
+      <Filter>Source Files\Shared_Console</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Host\host.c">
+      <Filter>Source Files\Shared_Host</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Host\host_cmd.c">
+      <Filter>Source Files\Shared_Host</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\chase.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\cmd.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\common.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\crc.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\cvar.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\in_win.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\keys.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\mathlib.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\menu.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\sbar.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\sys_win.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\view.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\wad.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\world.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Misc\zone.c">
+      <Filter>Source Files\Shared_Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Network\net_dgrm.c">
+      <Filter>Source Files\Shared_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Network\net_loop.c">
+      <Filter>Source Files\Shared_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Network\net_main.c">
+      <Filter>Source Files\Shared_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Network\net_win.c">
+      <Filter>Source Files\Shared_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Network\net_wins.c">
+      <Filter>Source Files\Shared_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Progs\pr_cmds.c">
+      <Filter>Source Files\Shared_Progs</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Progs\pr_edict.c">
+      <Filter>Source Files\Shared_Progs</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Progs\pr_exec.c">
+      <Filter>Source Files\Shared_Progs</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Render\r_part.c">
+      <Filter>Source Files\Shared_Render</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Server\sv_main.c">
+      <Filter>Source Files\Shared_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Server\sv_move.c">
+      <Filter>Source Files\Shared_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Server\sv_phys.c">
+      <Filter>Source Files\Shared_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Server\sv_user.c">
+      <Filter>Source Files\Shared_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Sound\cd_win.c">
+      <Filter>Source Files\Shared_Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Sound\snd_dma.c">
+      <Filter>Source Files\Shared_Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Sound\snd_mem.c">
+      <Filter>Source Files\Shared_Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Sound\snd_mix.c">
+      <Filter>Source Files\Shared_Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="shared\Sound\snd_win.c">
+      <Filter>Source Files\Shared_Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_draw.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_mesh.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_model.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_refrag.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_rlight.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_rmain.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_rmisc.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_rsurf.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_screen.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_vidnt.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glquake\OpenGL\gl_warp.c">
+      <Filter>Source Files\GL_OpenGL</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="shared\anorms.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\asm_i386.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\bspfile.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\cdaudio.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\client.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\cmd.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\common.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\conproc.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\console.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\crc.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\cvar.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\d_ifacea.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\draw.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\input.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\keys.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\mathlib.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\menu.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\modelgen.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\net.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\net_dgrm.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\net_loop.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\net_wins.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\pr_comp.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\progs.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\protocol.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\quakeasm.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\quakedef.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\r_local.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\render.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\resource.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\sbar.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\screen.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\server.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\sound.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\spritegn.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\sys.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\vid.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\view.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\wad.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\winquake.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\world.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="shared\zone.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="glquake\anorm_dots.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="glquake\gl_model.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="glquake\gl_warp_sin.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="glquake\glquake.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="shared\quake.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="shared\winquake.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="shared\Asm\math.s">
+      <Filter>Source Files\Shared_Asm</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shared\Asm\snd_mixa.s">
+      <Filter>Source Files\Shared_Asm</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shared\Asm\sys_wina.s">
+      <Filter>Source Files\Shared_Asm</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shared\Asm\worlda.s">
+      <Filter>Source Files\Shared_Asm</Filter>
+    </CustomBuild>
+    <CustomBuild Include="shared\progdefs.q1">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
