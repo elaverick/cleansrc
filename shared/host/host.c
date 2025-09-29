@@ -741,7 +741,8 @@ void Host_Init (quakeparms_t *parms)
 	Host_InitLocal ();
 	W_LoadWadFile ("gfx.wad");
 	Key_Init ();
-	Con_Init ();	
+	Con_Init ();
+	InitMathRoutines();
 	M_Init ();	
 	PR_Init ();
 	Mod_Init ();

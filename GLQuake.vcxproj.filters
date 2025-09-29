@@ -210,6 +210,9 @@
     <ClCompile Include="glquake\OpenGL\gl_warp.c">
       <Filter>Source Files\GL_OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="shared\asm\math.c">
+      <Filter>Source Files\Shared_Asm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shared\anorms.h">
@@ -362,9 +365,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="shared\Asm\math.s">
-      <Filter>Source Files\Shared_Asm</Filter>
-    </CustomBuild>
     <CustomBuild Include="shared\Asm\snd_mixa.s">
       <Filter>Source Files\Shared_Asm</Filter>
     </CustomBuild>

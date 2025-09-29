@@ -26,6 +26,7 @@ This project is a modernized version of **CleanSrc**, originally written by **To
 ### Building
 
 1. Clone the repository:
+````
    git clone https://github.com/elaverick/cleansrc.git
    cd Cleansrc
 ````
