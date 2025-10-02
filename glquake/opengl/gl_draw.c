@@ -871,7 +871,7 @@ int GL_LoadTexture (char *identifier, int width, int height, byte *data, qboolea
 
 /****************************************/
 
-static GLenum oldtarget = TEXTURE0_SGIS;
+static GLenum oldtarget = TEXTURE0_ARB;
 
 void GL_SelectTexture (GLenum target) 
 {
@@ -880,7 +880,7 @@ void GL_SelectTexture (GLenum target)
 	qglSelectTexture (target);
 	if (target == oldtarget) 
 		return;
-	cnttextures[oldtarget-TEXTURE0_SGIS] = currenttexture;
-	currenttexture = cnttextures[target-TEXTURE0_SGIS];
+	cnttextures[oldtarget-TEXTURE0] = currenttexture;
+	currenttexture = cnttextures[target-TEXTURE0];
 	oldtarget = target;
 }

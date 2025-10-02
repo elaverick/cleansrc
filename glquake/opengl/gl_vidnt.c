@@ -441,7 +441,7 @@ void CheckMultiTextureExtensions (void)
 		return;
 	}
 	
-	/*
+	
 	if (strstr(gl_extensions, "GL_ARB_multitexture ")) 
 	{
 		Con_Printf ("GL_ARB_multitexture enabled\n\n");
@@ -452,9 +452,7 @@ void CheckMultiTextureExtensions (void)
 		TEXTURE1 = TEXTURE1_ARB;	
 		return;
 	}
-	*/
-
-	if (strstr(gl_extensions, "GL_SGIS_multitexture ")) 
+	else if (strstr(gl_extensions, "GL_SGIS_multitexture ")) 
 	{
 		Con_Printf ("GL_SGIS_multitexture enabled\n\n");
 		qglMTexCoord2f		= (void *) wglGetProcAddress("glMTexCoord2fSGIS");
