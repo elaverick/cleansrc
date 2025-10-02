@@ -111,6 +111,7 @@
       <ProgramDataBaseFileName>.\GL_Debug\</ProgramDataBaseFileName>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FloatingPointModel>Precise</FloatingPointModel>
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -139,48 +140,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="shared\Asm\snd_mixa.s">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /EP &gt; "$(OutDir)%(Filename).spp" "%(FullPath)" 
-gas2masm\gas2masm &lt; "$(OutDir)%(Filename).spp" &gt; "$(OutDir)%(Filename).asm" 
-gas2masm\ml /c /Cp /coff /Fo"$(OutDir)%(Filename).obj" /Zm /Zi "$(OutDir)%(Filename).asm" 
-del "$(OutDir)%(Filename).spp" </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mycoolbuild</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OUTDIR)\%(Filename).obj;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /EP &gt; "$(OutDir)%(Filename).spp" "%(FullPath)" 
-gas2masm\gas2masm &lt; "$(OutDir)%(Filename).spp" &gt; "$(OutDir)%(Filename).asm" 
-gas2masm\ml /c /Cp /coff /Fo"$(OutDir)%(Filename).obj" /Zm /Zi "$(OutDir)%(Filename).asm" 
-del "$(OutDir)%(Filename).spp" </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mycoolbuild</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR)\%(Filename).obj;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="shared\Asm\sys_wina.s">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /EP &gt; "$(OutDir)%(Filename).spp" "%(FullPath)" 
-gas2masm\gas2masm &lt; "$(OutDir)%(Filename).spp" &gt; "$(OutDir)%(Filename).asm" 
-gas2masm\ml /c /Cp /coff /Fo"$(OutDir)%(Filename).obj" /Zm /Zi "$(OutDir)%(Filename).asm" 
-del "$(OutDir)%(Filename).spp" </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mycoolbuild</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OUTDIR)\%(Filename).obj;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /EP &gt; "$(OutDir)%(Filename).spp" "%(FullPath)" 
-gas2masm\gas2masm &lt; "$(OutDir)%(Filename).spp" &gt; "$(OutDir)%(Filename).asm" 
-gas2masm\ml /c /Cp /coff /Fo"$(OutDir)%(Filename).obj" /Zm /Zi "$(OutDir)%(Filename).asm" 
-del "$(OutDir)%(Filename).spp" </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mycoolbuild</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR)\%(Filename).obj;%(Outputs)</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="shared\Asm\worlda.s">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl /EP &gt; "$(OutDir)%(Filename).spp" "%(FullPath)" 
-gas2masm\gas2masm &lt; "$(OutDir)%(Filename).spp" &gt; "$(OutDir)%(Filename).asm" 
-gas2masm\ml /c /Cp /coff /Fo"$(OutDir)%(Filename).obj" /Zm /Zi "$(OutDir)%(Filename).asm" 
-del "$(OutDir)%(Filename).spp" </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mycoolbuild</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OUTDIR)\%(Filename).obj;%(Outputs)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl /EP &gt; "$(OutDir)%(Filename).spp" "%(FullPath)" 
-gas2masm\gas2masm &lt; "$(OutDir)%(Filename).spp" &gt; "$(OutDir)%(Filename).asm" 
-gas2masm\ml /c /Cp /coff /Fo"$(OutDir)%(Filename).obj" /Zm /Zi "$(OutDir)%(Filename).asm" 
-del "$(OutDir)%(Filename).spp" </Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mycoolbuild</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR)\%(Filename).obj;%(Outputs)</Outputs>
-    </CustomBuild>
     <CustomBuild Include="shared\progdefs.q1" />
   </ItemGroup>
   <ItemGroup>
@@ -195,7 +154,6 @@ del "$(OutDir)%(Filename).spp" </Command>
     <ClCompile Include="glquake\OpenGL\gl_screen.c" />
     <ClCompile Include="glquake\OpenGL\gl_vidnt.c" />
     <ClCompile Include="glquake\OpenGL\gl_warp.c" />
-    <ClCompile Include="shared\asm\math.c" />
     <ClCompile Include="shared\Client\cl_demo.c" />
     <ClCompile Include="shared\Client\cl_input.c" />
     <ClCompile Include="shared\Client\cl_main.c" />
@@ -245,7 +203,6 @@ del "$(OutDir)%(Filename).spp" </Command>
     <ClInclude Include="glquake\gl_model.h" />
     <ClInclude Include="glquake\gl_warp_sin.h" />
     <ClInclude Include="shared\anorms.h" />
-    <ClInclude Include="shared\asm_i386.h" />
     <ClInclude Include="shared\bspfile.h" />
     <ClInclude Include="shared\cdaudio.h" />
     <ClInclude Include="shared\client.h" />

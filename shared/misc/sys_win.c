@@ -23,7 +23,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "winquake.h"
 #include "resource.h"
 #include "conproc.h"
+#include <fenv.h>
 
+
+#pragma STDC FENV_ACCESS ON
 #define MINIMUM_WIN_MEMORY		0x01000000
 #define MAXIMUM_WIN_MEMORY		0x04000000
 
@@ -48,11 +51,6 @@ static HANDLE	tevent;
 static HANDLE	hFile;
 static HANDLE	heventParent;
 static HANDLE	heventChild;
-
-void MaskExceptions (void);
-void Sys_InitFloatTime (void);
-void Sys_PushFPCW_SetHigh (void);
-void Sys_PopFPCW (void);
 
 volatile int					sys_checksum;
 
@@ -267,25 +265,30 @@ void Sys_MakeCodeWriteable (unsigned long startaddr, unsigned long length)
 }
 
 
-#ifndef _M_IX86
-
-void Sys_SetFPCW (void)
+/*
+================
+Sys_InitFloatTime
+================
+*/
+void Sys_InitFloatTime(void)
 {
-}
+	int		j;
 
-void Sys_PushFPCW_SetHigh (void)
-{
-}
+	Sys_FloatTime();
 
-void Sys_PopFPCW (void)
-{
-}
+	j = COM_CheckParm("-starttime");
 
-void MaskExceptions (void)
-{
-}
+	if (j)
+	{
+		curtime = (double)(Q_atof(com_argv[j + 1]));
+	}
+	else
+	{
+		curtime = 0.0;
+	}
 
-#endif
+	lastcurtime = curtime;
+}
 
 /*
 ================
@@ -297,9 +300,9 @@ void Sys_Init (void)
 	LARGE_INTEGER	PerformanceFreq;
 	unsigned int	lowpart, highpart;
 	OSVERSIONINFO	vinfo;
-
-	MaskExceptions ();
-	Sys_SetFPCW ();
+	
+	// Mask Exceptions
+	feclearexcept(FE_ALL_EXCEPT); 
 
 	if (!QueryPerformanceFrequency (&PerformanceFreq))
 		Sys_Error ("No hardware timer available");
@@ -474,7 +477,7 @@ double Sys_FloatTime (void)
 	unsigned int		temp, t2;
 	double				time;
 
-	Sys_PushFPCW_SetHigh ();
+	//Sys_PushFPCW_SetHigh ();
 
 	QueryPerformanceCounter (&PerformanceCount);
 
@@ -521,35 +524,9 @@ double Sys_FloatTime (void)
 		}
 	}
 
-	Sys_PopFPCW ();
+	//Sys_PopFPCW ();
 
     return curtime;
-}
-
-
-/*
-================
-Sys_InitFloatTime
-================
-*/
-void Sys_InitFloatTime (void)
-{
-	int		j;
-
-	Sys_FloatTime ();
-
-	j = COM_CheckParm("-starttime");
-
-	if (j)
-	{
-		curtime = (double) (Q_atof(com_argv[j+1]));
-	}
-	else
-	{
-		curtime = 0.0;
-	}
-
-	lastcurtime = curtime;
 }
 
 

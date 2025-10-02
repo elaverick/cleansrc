@@ -4,9 +4,6 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{c678c7cb-1683-4109-b96f-db87c751dad2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Shared_Asm">
-      <UniqueIdentifier>{c3cce071-02dc-46a8-8dc5-ef0bb959616a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Shared_Client">
       <UniqueIdentifier>{7725d151-8e00-4488-8748-d7567b15175d}</UniqueIdentifier>
     </Filter>
@@ -210,15 +207,9 @@
     <ClCompile Include="glquake\OpenGL\gl_warp.c">
       <Filter>Source Files\GL_OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="shared\asm\math.c">
-      <Filter>Source Files\Shared_Asm</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shared\anorms.h">
-      <Filter>Header Files\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="shared\asm_i386.h">
       <Filter>Header Files\Shared</Filter>
     </ClInclude>
     <ClInclude Include="shared\bspfile.h">
@@ -365,15 +356,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="shared\Asm\snd_mixa.s">
-      <Filter>Source Files\Shared_Asm</Filter>
-    </CustomBuild>
-    <CustomBuild Include="shared\Asm\sys_wina.s">
-      <Filter>Source Files\Shared_Asm</Filter>
-    </CustomBuild>
-    <CustomBuild Include="shared\Asm\worlda.s">
-      <Filter>Source Files\Shared_Asm</Filter>
-    </CustomBuild>
     <CustomBuild Include="shared\progdefs.q1">
       <Filter>Resource Files</Filter>
     </CustomBuild>

@@ -19,8 +19,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 // mathlib.c -- math primitives
 
-#include <math.h>
 #include "quakedef.h"
+#include <math.h>
+#include <emmintrin.h> // SSE2 intrinsics
+#include <xmmintrin.h>  // SSE
+#include <smmintrin.h>  // SSE4.1 (for _mm_dp_ps)
 
 void Sys_Error (char *error, ...);
 
@@ -265,21 +268,27 @@ double sqrt(double x);
 
 float VectorNormalize (vec3_t v)
 {
-	float	length, ilength;
+	__m128 vec = _mm_set_ps(0.0f, v[2], v[1], v[0]); // pad with 0
+	__m128 squared = _mm_mul_ps(vec, vec);
 
-	length = v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
-	length = sqrt (length);		// FIXME
+	// Sum components (horizontal add manually)
+	__m128 shuf1 = _mm_shuffle_ps(squared, squared, _MM_SHUFFLE(2, 1, 0, 3));
+	__m128 sums = _mm_add_ps(squared, shuf1);
+	__m128 shuf2 = _mm_shuffle_ps(sums, sums, _MM_SHUFFLE(1, 0, 3, 2));
+	__m128 length_sq = _mm_add_ps(sums, shuf2);
 
-	if (length)
-	{
-		ilength = 1/length;
-		v[0] *= ilength;
-		v[1] *= ilength;
-		v[2] *= ilength;
+	// sqrt(length_sq)
+	float length = _mm_cvtss_f32(_mm_sqrt_ss(length_sq));
+
+	if (length > 0.0f) {
+		__m128 inv_len = _mm_rsqrt_ps(length_sq); // fast approximation
+		vec = _mm_mul_ps(vec, inv_len);
+		_mm_store_ss(&v[0], vec);
+		_mm_store_ss(&v[1], _mm_shuffle_ps(vec, vec, _MM_SHUFFLE(1, 1, 1, 1)));
+		_mm_store_ss(&v[2], _mm_shuffle_ps(vec, vec, _MM_SHUFFLE(2, 2, 2, 2)));
 	}
-		
-	return length;
 
+	return length;
 }
 
 void VectorSubtract (vec3_t a, vec3_t b, vec3_t c)
@@ -458,4 +467,108 @@ int GreatestCommonDivisor (int i1, int i2)
 			return (i2);
 		return GreatestCommonDivisor (i1, i2 % i1);
 	}
+}
+
+/* ---------------------------------------------------------------------------
+   Invert24To16
+   Matches asm behaviour:
+	 - if val <= 256 return 0xFFFFFFFF
+	 - else return floor(256 / val)
+   -------------------------------------------------------------------------*/
+unsigned int Invert24To16(unsigned int val)
+{
+	if (val <= 0x100u) {
+		return 0xFFFFFFFFu;
+	}
+	return (unsigned int)(0x100u / val);
+}
+
+/* ---------------------------------------------------------------------------
+   TransformVector (SSE2 always)
+   Computes:
+	 out[0] = in dot vright
+	 out[1] = in dot vup
+	 out[2] = in dot vpn
+   -------------------------------------------------------------------------*/
+void TransformVector(const float* in, float* out)
+{
+	__m128 vin = _mm_set_ps(0.0f, in[2], in[1], in[0]);
+
+	__m128 vr = _mm_set_ps(0.0f, vright[2], vright[1], vright[0]);
+	__m128 vu = _mm_set_ps(0.0f, vup[2], vup[1], vup[0]);
+	__m128 vp = _mm_set_ps(0.0f, vpn[2], vpn[1], vpn[0]);
+
+	__m128 mul, sh, add;
+
+	mul = _mm_mul_ps(vin, vr);
+	sh = _mm_shuffle_ps(mul, mul, _MM_SHUFFLE(3, 0, 2, 1));
+	add = _mm_add_ps(mul, sh);
+	sh = _mm_shuffle_ps(add, add, _MM_SHUFFLE(3, 0, 0, 2));
+	out[0] = _mm_cvtss_f32(_mm_add_ps(add, sh));
+
+	mul = _mm_mul_ps(vin, vu);
+	sh = _mm_shuffle_ps(mul, mul, _MM_SHUFFLE(3, 0, 2, 1));
+	add = _mm_add_ps(mul, sh);
+	sh = _mm_shuffle_ps(add, add, _MM_SHUFFLE(3, 0, 0, 2));
+	out[1] = _mm_cvtss_f32(_mm_add_ps(add, sh));
+
+	mul = _mm_mul_ps(vin, vp);
+	sh = _mm_shuffle_ps(mul, mul, _MM_SHUFFLE(3, 0, 2, 1));
+	add = _mm_add_ps(mul, sh);
+	sh = _mm_shuffle_ps(add, add, _MM_SHUFFLE(3, 0, 0, 2));
+	out[2] = _mm_cvtss_f32(_mm_add_ps(add, sh));
+}
+
+/* ---------------------------------------------------------------------------
+   BoxOnPlaneSide
+   Quake behaviour:
+	 Returns 1 if box is in front of plane,
+			 2 if box is behind plane,
+			 3 if box straddles.
+   -------------------------------------------------------------------------*/
+int BoxOnPlaneSide(vec3_t emins, vec3_t emaxs, mplane_t* p)
+{
+	const float* n = p->normal;
+
+	float dist1 = (n[0] >= 0.0f ? n[0] * emaxs[0] : n[0] * emins[0])
+		+ (n[1] >= 0.0f ? n[1] * emaxs[1] : n[1] * emins[1])
+		+ (n[2] >= 0.0f ? n[2] * emaxs[2] : n[2] * emins[2]);
+
+	float dist2 = (n[0] >= 0.0f ? n[0] * emins[0] : n[0] * emaxs[0])
+		+ (n[1] >= 0.0f ? n[1] * emins[1] : n[1] * emaxs[1])
+		+ (n[2] >= 0.0f ? n[2] * emins[2] : n[2] * emaxs[2]);
+
+	int sides = 0;
+	if (dist1 >= p->dist) sides = 1;
+	if (dist2 < p->dist) sides |= 2;
+
+	return sides;
+}
+
+int SV_HullPointContents(hull_t* hull, int num, const float p[3])
+{
+	while (num >= 0)
+	{
+		dclipnode_t* node = &hull->clipnodes[num];
+		mplane_t* plane = &hull->planes[node->planenum];
+
+		float d;
+
+		// Axis-aligned plane optimization
+		if (plane->type < 3) {
+			d = p[plane->type] - plane->dist;
+		}
+		else {
+			// Use SSE4.1 dot product: dot(normal, p) - dist
+			__m128 normal = _mm_setr_ps(plane->normal[0], plane->normal[1], plane->normal[2], 0.0f);
+			__m128 point = _mm_setr_ps(p[0], p[1], p[2], 0.0f);
+			__m128 dot = _mm_dp_ps(normal, point, 0x71);  // 0111 0001 = xyz, result in .x
+			d = _mm_cvtss_f32(dot) - plane->dist;
+		}
+
+		// Choose child node based on plane test
+		num = (d < 0.0f) ? node->children[1] : node->children[0];
+	}
+
+	return num;  // Final leaf node content index
 }
